@@ -60,6 +60,7 @@ int main(int argc, char *argv[]) {
        }
 
        if (create_db_header(dbfd, &dbhdr) == STATUS_ERROR) {
+        free(dbfd);
         printf("Failed to create database header\n");
        
        }
@@ -78,6 +79,9 @@ int main(int argc, char *argv[]) {
     }
     if (read_employees(dbfd, dbhdr, &employees) != STATUS_SUCCESS) {
         printf("Failed to read employees");
+        free(dbhdr);
+        free(dbfd);
+        free(employees);
         return 0;
     }
 
@@ -92,10 +96,7 @@ int main(int argc, char *argv[]) {
     printf("Newfile: %d\n", newfile);
     printf("Filepath: %s\n", filepath);
 
-    if (read_employees(dbfd, dbhdr, &employees) != STATUS_SUCCESS) {
-        printf("Read employees failed!\n");
-        return 0;
-    }
+
 
     output_file(dbfd, dbhdr, employees);
 
