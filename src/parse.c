@@ -24,6 +24,32 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
     }
 }
 
+void idlist_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
+    int i = 0;
+    for (; i < dbhdr->count; i++) {
+        printf("Employee %d\n", i);
+    }
+}
+
+int update_hours(struct dbheader_t *dbhdr, struct employee_t *employees, char *update) {
+    printf("%s\n",update);
+
+    char *count = strtok(update, ",");
+
+    char *hours = strtok(NULL, ",");
+    int counter = 0;
+    counter = atoi(count);
+
+    printf("\tOriginal Hours: %d\n", employees[counter].hours);
+
+    printf("Before: %s %s\n", count, hours);
+    employees[dbhdr->count].hours = atoi(hours);
+    printf("After: %s %s\n", count, hours);
+
+return STATUS_SUCCESS;
+
+}
+
 int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring) {
     printf("%s\n",addstring);
 
