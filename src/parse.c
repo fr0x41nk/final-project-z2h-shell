@@ -73,9 +73,9 @@ int update_hours(struct dbheader_t *dbhdr, struct employee_t *employees, char *u
 
     printf("\tOriginal Hours: %d\n", employees[position].hours);
 
-    printf("Before: %s %s\n", position, hours);
+    printf("Before: %d %d\n", position, hours);
     employees[position].hours = atoi(hours);
-    printf("After: %s %s\n", position, hours);
+    printf("After: %d %d\n", position, hours);
 
 return STATUS_SUCCESS;
 
