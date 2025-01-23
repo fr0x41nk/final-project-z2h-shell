@@ -24,6 +24,8 @@ void output_file(int fd, struct dbheader_t *, struct employee_t *employees);
 void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees);
 void idlist_employees(struct dbheader_t *dbhdr, struct employee_t *employees);
 int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring);
+int rmid_user(struct dbheader_t *dbhdr, struct employee_t *employees, int rmid);
+
 int update_hours(struct dbheader_t *dbhdr, struct employee_t *employees, char *update);
 
 #endif

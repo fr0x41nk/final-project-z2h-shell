@@ -24,6 +24,37 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
     }
 }
 
+int rmid_user(struct dbheader_t *dbhdr, struct employee_t *employees, int rmid) {
+    //int i = 0;
+    //int counter = 0;
+ // counter = atoi(rmid);
+        //printf("FFFFF Employee %d\n", counter);
+        //printf("Debug: rmid = %d, name = %s\n", rmid, employees[rmid].name ? employees[rmid].name : "(NULL)");
+
+       //  printf("Removing user with ID %d: %d\n", rmid, employees[rmid].name);
+
+        //printf("Removing user %s\n", employees[rmid].name);
+       // employees[dbhdr->count].name == NULL;
+      //  employees[dbhdr->count].address == NULL;
+       // employees[dbhdr->count].hours == NULL;
+        //employees[counter] == NULL;
+
+     //   printf("Removing after user %s\n", employees[dbhdr->count].name);
+
+        //strncpy(employees[dbhdr->counter].name,NULL,sizeof(NULL));
+
+        //strncpy(employees[dbhdr->count], 0, sizeof(employees[dbhdr->counter].name));
+
+
+    //strncpy(employees[dbhdr->count-1].name, name, sizeof(employees[dbhdr->count-1].name));
+    //strncpy(employees[dbhdr->count-1].address, addr, sizeof(employees[dbhdr->count-1].address));
+
+
+        return STATUS_SUCCESS;
+    
+}
+
+
 void idlist_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
     int i = 0;
     for (; i < dbhdr->count; i++) {

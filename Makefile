@@ -9,9 +9,12 @@ run: clean default
 	./$(TARGET) -n -f mynewdb.db
 	./$(TARGET) -f mynewdb.db -a "Frank Solli,Jebeveien,1337"
 	./$(TARGET) -f mynewdb.db -a "qbash,sandvika,1"
-	./$(TARGET) -f mynewdb.db -i
-	./$(TARGET) -f mynewdb.db -u 1,5
 	./$(TARGET) -f mynewdb.db -l
+	./$(TARGET) -f mynewdb.db -u 1,5
+#		./$(TARGET) -f mynewdb.db -r 1
+	./$(TARGET) -f mynewdb.db -l
+
+# ./$(TARGET) -f mynewdb.db -
 #	./$(TARGET) -f ./mynewdb.db -f mynewdb.db 
 #	./$(TARGET) -f ./mynewdb.db -a "Timmy H.,123 Sheshire Ln.,120"
 #	./$(TARGET) -f ./mynewdb.db -a "Timmy H.,123 Sheshire Ln.,120"

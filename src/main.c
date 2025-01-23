@@ -14,6 +14,7 @@ void print_usage(char *argv[]) {
     printf("\t -n - create new database file\n");
     printf("\t -f - (required) path to database file\n");
     printf("\t -u - Update hours on userID, usage: -u idN, hoursN\n");
+    printf("\t -r - Remove id\n");
     return;
 }
 
@@ -21,6 +22,7 @@ int main(int argc, char *argv[]) {
     char *filepath = NULL;
     char *addstring = NULL;
     char *update = NULL;
+    char *rmid = NULL;
     bool newfile = false;
     int c;
     bool list = false;
@@ -30,7 +32,7 @@ int main(int argc, char *argv[]) {
     struct dbheader_t *dbhdr = NULL;
     struct employee_t *employees = NULL;
 
-    while ((c = getopt(argc, argv, "nf:a:u:li")) != -1) {
+    while ((c = getopt(argc, argv, "nf:a:u:r:li")) != -1) {
         switch (c) {
             case 'n':
                     newfile = true;
@@ -52,6 +54,9 @@ int main(int argc, char *argv[]) {
             case 'u':
                     //update hours
                     update = optarg;
+                    break;
+            case 'r':
+                    rmid = optarg;
                     break;
             case '?':
                     printf("Unknown option -%c\n", c);
@@ -107,11 +112,22 @@ int main(int argc, char *argv[]) {
         add_employee(dbhdr,employees,addstring);
     }
 
+    //update hours on userid
+
     if (update) {
         printf("Updating hours on user\n");
+        employees = realloc(employees, dbhdr->count*(sizeof(struct employee_t)));
         update_hours(dbhdr,employees,update);
     }
 
+    //rm userid
+    if (rmid) {
+        printf("removing id function entered\n");
+        rmid_user(dbhdr,employees, rmid);
+        //output_file(dbfd, dbhdr, employees);
+
+    //    update_hours(dbhdr,employees,update);
+    }
     if (list) {
         list_employees(dbhdr, employees);
     }
