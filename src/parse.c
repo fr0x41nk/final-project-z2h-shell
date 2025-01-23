@@ -65,17 +65,17 @@ void idlist_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
 int update_hours(struct dbheader_t *dbhdr, struct employee_t *employees, char *update) {
     printf("%s\n",update);
 
-    char *count = strtok(update, ",");
+    int position = atoi(strtok(update, ","));
+    int *hours = strtok(NULL, ",");
 
-    char *hours = strtok(NULL, ",");
-    int counter = 0;
-    counter = atoi(count);
+    //int counter = 0;
+    //counter = atoi(count);
 
-    printf("\tOriginal Hours: %d\n", employees[counter].hours);
+    printf("\tOriginal Hours: %d\n", employees[position].hours);
 
-    printf("Before: %s %s\n", count, hours);
-    employees[dbhdr->count].hours = atoi(hours);
-    printf("After: %s %s\n", count, hours);
+    printf("Before: %s %s\n", position, hours);
+    employees[position].hours = atoi(hours);
+    printf("After: %s %s\n", position, hours);
 
 return STATUS_SUCCESS;
 

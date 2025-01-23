@@ -10,7 +10,7 @@ run: clean default
 	./$(TARGET) -f mynewdb.db -a "Frank Solli,Jebeveien,1337"
 	./$(TARGET) -f mynewdb.db -a "qbash,sandvika,1"
 	./$(TARGET) -f mynewdb.db -l
-	./$(TARGET) -f mynewdb.db -u 1,5
+	./$(TARGET) -f mynewdb.db -u 1,133
 #		./$(TARGET) -f mynewdb.db -r 1
 	./$(TARGET) -f mynewdb.db -l
 
