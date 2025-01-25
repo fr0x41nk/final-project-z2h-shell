@@ -11,7 +11,9 @@ run: clean default
 	./$(TARGET) -f mynewdb.db -a "qbash,sandvika,1"
 	./$(TARGET) -f mynewdb.db -l
 	./$(TARGET) -f mynewdb.db -u 1,133
-#		./$(TARGET) -f mynewdb.db -r 1
+	echo "removing\n\n\n\n\n"
+	./$(TARGET) -f mynewdb.db -r 1
+	echo "listing again\n\n\n\n\n"
 	./$(TARGET) -f mynewdb.db -l
 
 # ./$(TARGET) -f mynewdb.db -
