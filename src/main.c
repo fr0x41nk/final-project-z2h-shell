@@ -122,8 +122,8 @@ int main(int argc, char *argv[]) {
 
     //rm userid
     if (rmid) {
-        dbhdr->count--;
-        employees = realloc(employees, dbhdr->count*(sizeof(struct employee_t)));
+        //dbhdr->count--;
+       // employees = realloc(employees, dbhdr->count*(sizeof(struct employee_t)));
        printf("removing id function entered\n");
         output_file_rm(dbhdr, employees, rmid);
     }

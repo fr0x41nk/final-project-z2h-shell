@@ -178,9 +178,9 @@ void output_file(int fd, struct dbheader_t *dbhdr, struct employee_t *employees)
 int output_file_rm(struct dbheader_t *dbhdr, struct employee_t *employees, char *rmid) {
 
     int position = atoi(rmid);
-    int i = 4;
-
-    int realcount = dbhdr->count;
+   // int i = 4;
+    employees[position].is_active = false;
+   // int realcount = dbhdr->count;
     //dbhdr->count-1;
     //employees[i] = employees[i + 1];
     //employees--;
