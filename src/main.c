@@ -122,12 +122,15 @@ int main(int argc, char *argv[]) {
 
     //rm userid
     if (rmid) {
-        printf("removing id function entered\n");
-        rmid_user(dbhdr,employees, rmid);
+        dbhdr->count--;
+        employees = realloc(employees, dbhdr->count*(sizeof(struct employee_t)));
+       printf("removing id function entered\n");
+        output_file_rm(dbhdr, employees, rmid);
+    }
         //output_file(dbfd, dbhdr, employees);
 
     //    update_hours(dbhdr,employees,update);
-    }
+    //}
     if (list) {
         list_employees(dbhdr, employees);
     }

@@ -6,13 +6,18 @@ CFLAGS = -g -Iinclude
 #LDFLAGS = -fsanitize=address
 
 run: clean default
+	rm -f mynewdb.db
 	./$(TARGET) -n -f mynewdb.db
 	./$(TARGET) -f mynewdb.db -a "Frank Solli,Jebeveien,1337"
 	./$(TARGET) -f mynewdb.db -a "qbash,sandvika,1"
+	./$(TARGET) -f mynewdb.db -a "ja,sandvika,2"
+	./$(TARGET) -f mynewdb.db -a "a,k,5"
+	./$(TARGET) -f mynewdb.db -a "linus,torvalds,1"
 	./$(TARGET) -f mynewdb.db -l
 	./$(TARGET) -f mynewdb.db -u 1,133
-	echo "removing\n\n\n\n\n"
-	./$(TARGET) -f mynewdb.db -r 1
+#	./$(TARGET) -f mynewdb.db -r 4
+#	echo "removing\n\n\n\n\n"
+#	./$(TARGET) -f mynewdb.db -r 1
 	echo "listing again\n\n\n\n\n"
 	./$(TARGET) -f mynewdb.db -l
 

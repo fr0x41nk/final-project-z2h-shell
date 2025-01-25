@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdbool.h>
+
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <arpa/inet.h>
@@ -20,39 +23,49 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
         printf("\tName: %s\n", employees[i].name);
         printf("\tAddress: %s\n", employees[i].address);
         printf("\tHours: %d\n", employees[i].hours);
+        printf("\tis_active: %d\n", employees[i].is_active);
 
     }
 }
 
-int rmid_user(struct dbheader_t *dbhdr, struct employee_t *employees, int rmid) {
+//int rmid_user(struct dbheader_t *dbhdr, struct employee_t *employees, char *rmid) {
+
+ //  int position = atoi(rmid);
+//   int i = 0;
+ 
+//}
+
+//int rmid_user(struct dbheader_t *dbhdr, struct employee_t *employees, char *rmid) {
     //int i = 0;
     //int counter = 0;
- // counter = atoi(rmid);
-        //printf("FFFFF Employee %d\n", counter);
+//       int position = atoi(rmid);
+        //printf("FFFFF Employee %d\n", position);
+
+
         //printf("Debug: rmid = %d, name = %s\n", rmid, employees[rmid].name ? employees[rmid].name : "(NULL)");
 
        //  printf("Removing user with ID %d: %d\n", rmid, employees[rmid].name);
 
-        //printf("Removing user %s\n", employees[rmid].name);
-       // employees[dbhdr->count].name == NULL;
-      //  employees[dbhdr->count].address == NULL;
-       // employees[dbhdr->count].hours == NULL;
+      //  printf("Removing user %s\n", employees[position].name);
+     //   employees[position].hours = 7;
+     //  employees[dbhdr->count].address == NULL;
+     //  employees[dbhdr->count].hours == NULL;
         //employees[counter] == NULL;
 
      //   printf("Removing after user %s\n", employees[dbhdr->count].name);
 
         //strncpy(employees[dbhdr->counter].name,NULL,sizeof(NULL));
 
-        //strncpy(employees[dbhdr->count], 0, sizeof(employees[dbhdr->counter].name));
+        //strncpy(employees[dbhdr->count], 0, 0);
 
 
     //strncpy(employees[dbhdr->count-1].name, name, sizeof(employees[dbhdr->count-1].name));
     //strncpy(employees[dbhdr->count-1].address, addr, sizeof(employees[dbhdr->count-1].address));
 
 
-        return STATUS_SUCCESS;
+   //     return STATUS_SUCCESS;
     
-}
+//}
 
 
 void idlist_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
@@ -100,6 +113,8 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
     strncpy(employees[dbhdr->count-1].address, addr, sizeof(employees[dbhdr->count-1].address));
 
     employees[dbhdr->count-1].hours = atoi(hours);
+        employees[dbhdr->count-1].is_active = true;
+
 
 
     return STATUS_SUCCESS;
@@ -139,6 +154,7 @@ void output_file(int fd, struct dbheader_t *dbhdr, struct employee_t *employees)
         return STATUS_ERROR;
     }
 
+
     int realcount = dbhdr->count;
 
     dbhdr->magic = htonl(dbhdr->magic);
@@ -159,7 +175,28 @@ void output_file(int fd, struct dbheader_t *dbhdr, struct employee_t *employees)
     return STATUS_SUCCESS;
 
 }
+int output_file_rm(struct dbheader_t *dbhdr, struct employee_t *employees, char *rmid) {
 
+    int position = atoi(rmid);
+    int i = 4;
+
+    int realcount = dbhdr->count;
+    //dbhdr->count-1;
+    //employees[i] = employees[i + 1];
+    //employees--;
+ 
+        
+   // int i = 0;
+   // for (; i < realcount; i++) { 
+  //      if (i == position) {
+    //        continue;} // go back to loop }
+     //       employees[i].hours = htonl(employees[i].hours); 
+         return STATUS_SUCCESS;
+           
+   
+        
+
+}
 int validate_db_header(int fd, struct dbheader_t **headerOut) {
     if (fd < 0) {
         printf("God a bad FD from the user\n");
@@ -228,4 +265,3 @@ int create_db_header(int fd, struct dbheader_t **headerOut) {
 }
 
 
-//16:06 minute video
