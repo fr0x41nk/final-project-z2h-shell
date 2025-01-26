@@ -20,6 +20,7 @@ void handle_client(int fd) {
     read(fd, buf, sizeof(proto_hdr_t) + sizeof(int));
 
     proto_hdr_t *hdr = buf;
+    
     hdr->type = ntohl(hdr->type);
     hdr->len = ntohs(hdr->len);
     int *data = &hdr[1];
@@ -65,7 +66,7 @@ if (connect(fd, (struct sockaddr*)&serverInfo, sizeof(serverInfo)) == -1) {
     return 0;
 
 }
-
+handle_client(fd); 
 close(fd);
 
 
