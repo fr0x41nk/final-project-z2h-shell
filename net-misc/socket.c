@@ -36,6 +36,7 @@ int main() {
         return -1;
     }
 
+while (1) {
     //accept
     int cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
     if (cfd == -1) {
@@ -43,10 +44,6 @@ int main() {
         close(fd);
         return -1;
     }
-
     close(cfd);
-
-
-
-
+    }
 }
