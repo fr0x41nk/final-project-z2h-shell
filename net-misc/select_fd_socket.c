@@ -3,6 +3,10 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <sys/select.h>
+
+
+
 
 typedef enum {
     PROTO_HELLO,
@@ -25,11 +29,16 @@ void handle_client(int fd) {
 
     int *data = (int*)&hdr[1]; //pont to after the struct, write 1 aftev struct in mem
     *data = htonl(1); //write htonl 1 to where data  points
-
+    
     write(fd, hdr, sizeof(proto_hdr_t) + reallen);
 }
 
 int main() {
+
+
+
+
+
     struct sockaddr_in serverInfo = {0};
     struct sockaddr_in clientInfo = {0};
     int clientSize = 0;
@@ -61,17 +70,40 @@ int main() {
         return -1;
     }
 
+
+fd_set current_sockets, ready_sockets;
+FD_ZERO(&current_sockets);
+FD_SET(fd, &current_sockets); 
+
 while (1) {
+        ready_sockets = current_sockets;
+
     //accept
-    int cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
-    if (cfd == -1) {
-        perror("accept");
-        close(fd);
+    if (select(FD_SETSIZE, &ready_sockets, NULL, NULL, NULL) < 0) {
+        perror("select error");
         return -1;
     }
 
-    handle_client(cfd); 
+    for (int i=0; i < FD_SETSIZE; i++) {
+        if (FD_ISSET(i, &ready_sockets)) {
+            if (i == fd) {
+                //this is a new connection
+                printf("FD: %d\n", i);
 
-    close(cfd);
+                int cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
+                FD_SET(cfd, &current_sockets);
+            } else {
+        handle_client(i); 
+        close(i);
+        FD_CLR(i, &current_sockets);
+            }
+
+
+            }
+        }
     }
+
+
+
+
 }
