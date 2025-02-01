@@ -88,11 +88,12 @@ while (1) {
         if (FD_ISSET(i, &ready_sockets)) {
             if (i == fd) {
                 //this is a new connection
-                printf("FD: %d\n", i);
+                printf("FD: %d\n", i); // print server socket
 
                 int cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
                 FD_SET(cfd, &current_sockets);
             } else {
+                printf("FD: %d\n", i); // print client socket
         handle_client(i); 
         close(i);
         FD_CLR(i, &current_sockets);
