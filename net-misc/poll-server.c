@@ -75,7 +75,7 @@ int main() {
     fds[1].events = POLLIN;
 
 
-    int ret = poll(fds,2, -1);
+    
 
 
     
@@ -83,8 +83,9 @@ int main() {
 
     while (1) {
         //accept
+        int ret = poll(fds,2, -1);
         if (ret > 0) {
-            poll(fds, 2,-1);
+            //poll(fds, 2,-1);
             if (fds[0].revents & POLLIN) {
                 cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
                 fds[1].fd = cfd;
