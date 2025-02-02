@@ -76,14 +76,14 @@ int main() {
 
 
     
-
+   int ret = poll(fds,2, -1);
 
     
 
 
     while (1) {
         //accept
-        int ret = poll(fds,2, -1);
+     
         if (ret > 0) {
             //poll(fds, 2,-1);
             if (fds[0].revents & POLLIN) {
