@@ -82,14 +82,19 @@ int main() {
     while (1) {
         //accept
         if (ret > 0) {
+            poll(fds, 2,-1);
             if (fds[0].revents & POLLIN) {
                 cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
                 fds[1].fd = cfd;
+                // if poll fds = fd .... run poll
+               // if (fds[0].revents & POLLIN) {
+                   
+               // }
                 
           
-            }poll(fds, 2,-1);
+            }
             if (fds[1].revents & POLLIN) {
-               
+                
                 handle_client(cfd);
                 
 
