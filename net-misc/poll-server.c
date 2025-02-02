@@ -78,6 +78,8 @@ int main() {
     int ret = poll(fds,2, -1);
 
 
+    
+
 
     while (1) {
         //accept
@@ -93,13 +95,14 @@ int main() {
                 
           
             }
-            if (fds[1].revents & POLLIN) {
+            if (fds[1].fd != -1 && fds[1].revents & POLLIN) {
                 
                 handle_client(cfd);
                 
 
               
                 close(cfd);
+                fds[1].fd = -1;
         
             }
         } else if (ret == 0) {
