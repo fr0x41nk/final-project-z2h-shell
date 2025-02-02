@@ -1,0 +1,40 @@
+Reading symbols from a.out...
+
+quit
+Reading symbols from ./a.out...
+Breakpoint 1 at 0x13f7: file poll-server.c, line 35.
+Breakpoint 2 at 0x11c0
+Breakpoint 3 at 0x1190
+Starting program: /home/frank/Downloads/final-project-z2h-shell/net-misc/a.out 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at poll-server.c:35
+#0  main () at poll-server.c:35
+Continuing.
+[Inferior 1 (process 2964936) exited with code 0377]
+The program is not being run.
+Starting program: /home/frank/Downloads/final-project-z2h-shell/net-misc/a.out 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at poll-server.c:35
+__libc_start_call_main (main=main@entry=0x5555555553eb <main>, argc=argc@entry=1, argv=argv@entry=0x7fffffffda78) at ../sysdeps/nptl/libc_start_call_main.h:74
+#0  __libc_start_call_main (main=main@entry=0x5555555553eb <main>, argc=argc@entry=1, argv=argv@entry=0x7fffffffda78) at ../sysdeps/nptl/libc_start_call_main.h:74
+#1  0x00007ffff7da2e40 in __libc_start_main_impl (main=0x5555555553eb <main>, argc=1, argv=0x7fffffffda78, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffda68) at ../csu/libc-start.c:392
+#2  0x0000555555555205 in _start ()
+No symbol "fd" in current context.
+1: buffer = 0x0
+No symbol "cfd" in current context.
+Continuing.
+[Inferior 1 (process 2966012) exited with code 0377]
+The program is not being run.
+No stack.
+Starting program: /home/frank/Downloads/final-project-z2h-shell/net-misc/a.out 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at poll-server.c:35
+1: buffer = '\000' <repeats 29 times>
+
+quit
