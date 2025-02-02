@@ -39,7 +39,7 @@ int main() {
     int clientSize = 0;
     serverInfo.sin_family = AF_INET;
     serverInfo.sin_addr.s_addr = 0;
-    serverInfo.sin_port = htons(5556);
+    serverInfo.sin_port = htons(5559);
 
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd == -1) {
@@ -83,12 +83,17 @@ int main() {
         //accept
         if (ret > 0) {
             if (fds[0].revents & POLLIN) {
-                int cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
+                cfd = accept(fd, (struct sockaddr *)&clientInfo,&clientSize);
                 fds[1].fd = cfd;
-         
-            }
+                
+          
+            }poll(fds, 2,-1);
             if (fds[1].revents & POLLIN) {
+               
                 handle_client(cfd);
+                
+
+              
                 close(cfd);
         
             }

@@ -38,3 +38,6 @@ Breakpoint 1, main () at poll-server.c:35
 1: buffer = '\000' <repeats 29 times>
 
 quit
+Reading symbols from ./a.out...
+
+warning: Source file is more recent than executable.
