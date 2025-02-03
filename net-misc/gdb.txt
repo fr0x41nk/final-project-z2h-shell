@@ -41,3 +41,23 @@ quit
 Reading symbols from ./a.out...
 
 warning: Source file is more recent than executable.
+
+quit
+Reading symbols from ./a.out...
+
+warning: Source file is more recent than executable.
+Starting program: /home/frank/Downloads/final-project-z2h-shell/net-misc/a.out 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at poll-server.c:35
+Continuing.
+
+Breakpoint 5, __GI___poll (fds=0x7fffffffd940, nfds=2, timeout=-1) at ../sysdeps/unix/sysv/linux/poll.c:27
+Starting program: /home/frank/Downloads/final-project-z2h-shell/net-misc/a.out 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at poll-server.c:35
+
+Breakpoint 5, __GI___poll (fds=0x7fffffffd940, nfds=2, timeout=-1) at ../sysdeps/unix/sysv/linux/poll.c:27
