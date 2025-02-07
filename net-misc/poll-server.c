@@ -64,6 +64,10 @@ int main() {
         return -1;
     }
 
+    int opt = 1;
+
+
+
     struct pollfd fds[2];
     fds[0].fd = fd;
     fds[0].events = POLLIN;
@@ -76,13 +80,18 @@ int main() {
 
 
     
-   int ret = poll(fds,2, -1);
-
+if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(int)) == -1) {
+    perror("setsockopt");
+    // Handle error
+}
     
 
 
     while (1) {
+                   int ret = poll(fds,2, -1);
+
         //accept
+
      
         if (ret > 0) {
             //poll(fds, 2,-1);

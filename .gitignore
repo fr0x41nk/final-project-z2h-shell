@@ -1,3 +1,8 @@
 obj/
 bin/
 *.db
+# Ignore Emacs backup and autosave files
+*~
+\#*\#
+.\#*
+
